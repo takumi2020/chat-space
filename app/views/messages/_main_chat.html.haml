@@ -1,0 +1,36 @@
+.mainChat
+  .mainChat-header
+    .mainChat-header__group
+      .mainChat-header__groupName
+        %p test
+      .mainChat-header__groupMenber
+        %p Member : masa
+    .mainChat-header__edit
+      = link_to "Edit", "#",class: 'edit'  
+  .mainChat-main
+    .mainChat-main__messageList
+      %ul.mainChat-main__messageList-content
+        %li.groupName masa 
+        %li.inputDate 2019/11/20(wed) 17:40:30
+      %p.mainChat-main__messageList-message おはよう!
+
+      %ul.mainChat-main__messageList-content
+        %li.groupName masa 
+        %li.inputDate 2019/11/20(wed) 17:40:30
+      %p.mainChat-main__messageList-message おはよう!
+
+      %ul.mainChat-main__messageList-content
+        %li.groupName masa 
+        %li.inputDate 2019/11/20(wed) 17:40:30
+      %p.mainChat-main__messageList-message おはよう!
+
+    
+  .mainChat-footer
+    %form.mainChat-footer__message
+      .mainChat-footer__messageBox
+        .mainChat-footer__messageBoxholder
+          %input.mainChat-footer__messageBoxholder--text{type: "text", placeholder: "type a message"}
+          %label.mainChat-footer__messageBoxholder--image
+            = icon('fas', 'image', class: "icon")
+            %input.messageBox{type: "file"}
+        %input.mainChat-footer__messageBox--btn{type: "submit", value: "Send"}
