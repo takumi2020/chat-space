@@ -47,11 +47,16 @@
         height: auto;
         padding: 20px 20px 40px 20px;
         &Name{
+          color: #ffffff;
           font-size: 15px;
           margin-bottom: 5px;
         }
         &Message{
+          color: #ffffff;
           font-size: 11px;        
+        }
+        .edit{
+          text-decoration: none;
         }
       }
     }
