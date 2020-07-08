@@ -4,14 +4,17 @@
       %p.sideMenu-headerTop__name 
         = current_user.name
       .sideMenu-headerTop__icons
-        = link_to "#" do
+        = link_to new_group_path(current_user) do
           = icon('far', 'edit', class: 'edit')
         = link_to edit_user_path(current_user) do
           = icon('fas', 'cog', class: 'cog')
   .sideMenu-main
-    .sideMenu-main__group
-      = link_to "#" do
-        %p.sideMenu-main__groupName techcamp
-        %p.sideMenuedi-main__groupMessage まだメッセージありません
+    - current_user.groups.each do |group|
+      .sideMenu-main__group
+        = link_to edit_group_path(group), class: "edit" do
+          %p.sideMenu-main__groupName 
+            = group.name
+          %p.sideMenu-main__groupMessage 
+            まだメッセージありません
 
 
