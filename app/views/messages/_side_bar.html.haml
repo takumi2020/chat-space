@@ -11,10 +11,10 @@
   .sideMenu-main
     - current_user.groups.each do |group|
       .sideMenu-main__group
-        = link_to edit_group_path(group), class: "edit" do
+        = link_to group_messages_path(group), class: "edit" do
           %p.sideMenu-main__groupName 
             = group.name
-          %p.sideMenu-main__groupMessage 
-            まだメッセージありません
+          %p.sideMenu-main__groupMessage
+            = group.show_last_message
 
 

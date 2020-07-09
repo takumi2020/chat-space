@@ -2,35 +2,25 @@
   .mainChat-header
     .mainChat-header__group
       .mainChat-header__groupName
-        %p test
+        %p
+        = @group.name
       .mainChat-header__groupMenber
-        %p Member : masa
+        %p 
+          Member :
+          - @group.users.each do |user|
+            = user.name
     .mainChat-header__edit
-      = link_to "Edit", "#",class: 'edit'  
+      = link_to "Edit", edit_group_path(@group), class: 'edit'  
   .mainChat-main
-    .mainChat-main__messageList
-      %ul.mainChat-main__messageList-content
-        %li.groupName masa 
-        %li.inputDate 2019/11/20(wed) 17:40:30
-      %p.mainChat-main__messageList-message おはよう!
-
-      %ul.mainChat-main__messageList-content
-        %li.groupName masa 
-        %li.inputDate 2019/11/20(wed) 17:40:30
-      %p.mainChat-main__messageList-message おはよう!
-
-      %ul.mainChat-main__messageList-content
-        %li.groupName masa 
-        %li.inputDate 2019/11/20(wed) 17:40:30
-      %p.mainChat-main__messageList-message おはよう!
-
+    = render @messages
+    
     
   .mainChat-footer
-    %form.mainChat-footer__message
+    = form_with model: [@group, @message], html: {class: "mainChat-footer__message"}, local: true do |f|
       .mainChat-footer__messageBox
         .mainChat-footer__messageBoxholder
-          %input.mainChat-footer__messageBoxholder--text{type: "text", placeholder: "type a message"}
-          %label.mainChat-footer__messageBoxholder--image
+          = f.text_field :coment, class: 'mainChat-footer__messageBoxholder--text', placeholder: "type a message"
+          = f.label :image, class: 'mainChat-footer__messageBoxholder--image' do
             = icon('fas', 'image', class: "icon")
-            %input.messageBox{type: "file"}
-        %input.mainChat-footer__messageBox--btn{type: "submit", value: "Send"}
+            = f.file_field :image, class: "messageBox"
+        = f.submit 'Send', class: 'mainChat-footer__messageBox--btn'
