@@ -39,6 +39,7 @@
       }
     }
     &-main{
+      overflow: scroll;
       width: $width;
       height: calc( 100vh - 100px);
       background-color: #2f3e51;
@@ -99,6 +100,7 @@
         }
     }
     &-main{
+      overflow: scroll;
       width: $width;
       height: calc( 100vh - 100px - 90px );
       background-color: #fafafa;
