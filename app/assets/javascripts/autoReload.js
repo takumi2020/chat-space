@@ -2,7 +2,7 @@ $(function () {
   function buildHTML(message) {
     if (message.image) {
       let html = 
-        `<div class="mainChat-main__messageList">
+        `<div class="mainChat-main__messageList" data-message-id=${message.id}>
           <ul class="mainChat-main__messageList-content">
               <li class="groupName">
                 ${message.user_name}
@@ -21,7 +21,7 @@ $(function () {
       return html;
     } else {
       let html = 
-      `<div class="mainChat-main__messageList">
+      `<div class="mainChat-main__messageList" data-message-id=${message.id}>
           <ul class="mainChat-main__messageList-content">
               <li class="groupName">
                 ${message.user_name}
@@ -64,4 +64,28 @@ $(function () {
         $('.mainChat-footer__messageBox--btn').attr('disabled', false);
       });
   });
+
+  let reloadMessages = function() {
+    let last_message_id = $('.mainChat-main__messageList:last').data("message-id") || 0;
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) {
+        let insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.mainChat-main').append(insertHTML);
+        $('.mainChat-main').animate({ scrollTop: $('.mainChat-main')[0].scrollHeight});
+      }
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+  setInterval(reloadMessages, 7000);
 });
