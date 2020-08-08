@@ -18,9 +18,9 @@
   .mainChat-footer
     = form_with model: [@group, @message], html: {class: "mainChat-footer__message"}, local: true do |f|
       .mainChat-footer__messageBox
-    .mainChat-footer__messageBoxholder
-      = f.text_field :coment, class: 'mainChat-footer__messageBoxholder--text', placeholder: "type a message"
-      = f.label :image, class: 'mainChat-footer__messageBoxholder--image' do
-        = icon('fas', 'image', class: "icon")
-        = f.file_field :image, class: "messageBox"
-    = f.submit 'Send', class: 'mainChat-footer__messageBox--btn'
+        .mainChat-footer__messageBoxholder
+          = f.text_field :coment, class: 'mainChat-footer__messageBoxholder--text', placeholder: "type a message"
+          = f.label :image, class: 'mainChat-footer__messageBoxholder--image' do
+            = icon('fas', 'image', class: "icon")
+            = f.file_field :image, class: "messageBox"
+        = f.submit 'Send', class: 'mainChat-footer__messageBox--btn'
