@@ -30,5 +30,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-
-public/uploads/*
+.DS_STORE
+public/uploads/*rai
